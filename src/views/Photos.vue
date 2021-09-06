@@ -1,6 +1,6 @@
 <template>
-  <div class="About">
-    <h1 class="subtitle-1 grey--text">About</h1>
+  <div class="Photos">
+    <h1 class="subtitle-1 grey--text">Photos</h1>
 
     <v-container class="my-5">
       content
@@ -9,7 +9,5 @@
 </template>
 
 <script>
-export default {
-  components: {},
-};
+export default {};
 </script>

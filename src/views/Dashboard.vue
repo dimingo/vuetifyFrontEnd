@@ -1,15 +1,19 @@
 <template>
-  <div class="About">
-    <h1 class="subtitle-1 grey--text">About</h1>
-
+  <div class="Dashboard">
+    <h1 class="subtitle-1 grey--text">Dashboard</h1>
     <v-container class="my-5">
+
       content
+
     </v-container>
+    
+
+    
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
+
 };
 </script>
