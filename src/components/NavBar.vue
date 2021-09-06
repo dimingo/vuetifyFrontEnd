@@ -17,7 +17,7 @@
     </v-toolbar>
     <v-navigation-drawer app v-model="drawer" class="primary">
       <v-list>
-        <v-list-item v-for="link in links" :key="link.text">
+        <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
           <v-list-item-icon>
             <v-icon >{{link.icon}}</v-icon>
           </v-list-item-icon>
@@ -36,9 +36,9 @@ export default {
     return {
       drawer: false,
       links: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'About', icon: 'mdi-help-box' }, 
+          { title: 'Dashboard', icon: 'mdi-view-dashboard', route:"/" },
+          { title: 'Photos', icon: 'mdi-image', route:"/photos" },
+          { title: 'About', icon: 'mdi-help-box', route:"/about" }, 
       ]
     };
   },
