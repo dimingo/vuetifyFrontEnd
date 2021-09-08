@@ -7,7 +7,9 @@
         <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
           <v-card plain class="text-center ma-3">
             <v-responsive class="pt-4">
-              Image Goes Here
+              <v-avatar  size="118" class="grey lighten-2">
+               <img :src="person.avatar" alt="">
+               </v-avatar>
             </v-responsive>
             <v-card-text>
               <div class="subheading">
@@ -34,13 +36,16 @@ export default {
   data() {
     return {
       team: [
-        { name: "The Net Ninja", role: "Web developer" },
-        { name: "Ryu", role: "Graphic designer" },
-        { name: "Chun Li", role: "Web developer" },
-        { name: "Gouken", role: "Social media maverick" },
-        { name: "Yoshi", role: "Sales guru" },
+        { name: "The Net Ninja", role: "Web developer", avatar:"/avatar-1.png" },
+        { name: "Ryu", role: "Graphic designer",avatar:"/avatar-2.png" },
+        { name: "Chun Li", role: "Web developer" ,avatar:"/avatar-3.png"},
+        { name: "Gouken", role: "Social media maverick", avatar:"/avatar-1.png" },
+        { name: "Yoshi", role: "Sales guru", avatar:"/avatar-1.png" },
       ],
     };
   },
 };
 </script>
+
+, avatar:"/avatar-2.png"
+, avatar: "/avatar-3.png
