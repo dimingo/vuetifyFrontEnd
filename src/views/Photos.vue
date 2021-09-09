@@ -16,7 +16,7 @@
                 {{ person.name }}
               </div>
               <div class="grey--text">{{person.role}}</div>
-              
+              <div>{{info}}</div>
             </v-card-text>
             <v-card-actions>
               <v-btn plain color="grey">
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -42,8 +43,14 @@ export default {
         { name: "Gouken", role: "Social media maverick", avatar:"/avatar-1.png" },
         { name: "Yoshi", role: "Sales guru", avatar:"/avatar-1.png" },
       ],
+      info: null
     };
   },
+  mounted() {
+   axios
+      .get('http://127.0.0.1:8000/api/get-mail/mitchel')
+      .then(response => (this.info = response.data))
+  }
 };
 </script>
 

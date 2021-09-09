@@ -44,7 +44,8 @@
           </v-avatar>
           <p class="white--text subheading mt-1">Software Engineer</p>
         </v-flex>
-        <v-flex>
+        <v-flex grow>
+         
           <popup/>
         </v-flex>
       </v-layout>
