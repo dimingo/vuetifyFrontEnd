@@ -1,5 +1,6 @@
 <template>
  <div>
+   <!-- {{items.data}} -->
 
   <v-treeview
     v-model="tree"
@@ -26,7 +27,7 @@ import axios from 'axios'
   export default {
     data () {
 
-      
+
     return{
       initiallyOpen: "Annual General Meetings",
       files: {
