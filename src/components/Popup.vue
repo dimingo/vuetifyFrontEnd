@@ -1,71 +1,31 @@
 <template>
-  <v-row justify="space-around">
+  <v-row >
     <v-col cols="auto">
       <v-dialog transition="dialog-bottom-transition" max-width="600">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             class="white--text primary"
-            elevation="21"
+            elevation="14"
             light
             v-bind="attrs"
             v-on="on"
-            >Add New Project</v-btn
+            >Add New Folder</v-btn
           >
         </template>
         <template v-slot:default="dialog">
           <v-card>
             <v-card-title>
-              <div><h3>Add new title</h3></div>
+              <div><h3>Add Folder Details</h3></div>
             </v-card-title>
             <v-card-text>
-              <v-form class="px-3">
-                <v-text-field
-                  label="Title"
-                  v-model="title"
-                  prepend-icon="mdi-folder"
-                ></v-text-field>
-
-                <v-menu
-                  v-model="fromDateMenu"
-                  :close-on-content-click="false"
-                  :nudge-right="40"
-                  lazy
-                  transition="scale-transition"
-                  offset-y
-                  full-width
-                  max-width="290px"
-                  min-width="290px"
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-text-field
-                      label="From Date"
-                      prepend-icon="mdi-event"
-                      readonly
-                      :value="picker"
-                      v-on="on"
-                    ></v-text-field>
-                  </template>
-                  <v-date-picker
-                    locale="en-in"
-                    :min="minDate"
-                    :max="maxDate"
-                    v-model="picker"
-                    no-title
-                    @input="fromDateMenu = false"
-                  ></v-date-picker>
-                </v-menu>
-
-                <v-textarea
-                  label="Information"
-                  v-model="content"
-                  prepend-icon="mdi-pencil"
-                ></v-textarea>
-              </v-form>
+              
+                <input type="text" v-model="path" >
+  
             </v-card-text>
 
             <v-card-actions class="justify-start">
-              <v-btn plain class="green--text" text @click="submit"
-                >Add Project</v-btn
+              <v-btn plain class="green--text" text @click="getChildren"
+                >enter</v-btn
               >
               <v-btn plain class="red--text" @click="dialog.value = false"
                 >Close</v-btn
@@ -79,19 +39,39 @@
 </template>
 
 <script>
+const axios = require( 'axios')
 export default {
   data() {
     return {
       title: "",
       content: "",
       picker: null,
+      path:null,
     };
   },
-  methods: {
-    submit() {
-      console.log(this.title, this.content);
-    },
+
+   mounted() {
+     this.getChildren
+     
+  //  axios
+  //     .get("http://127.0.0.1:8000/api/get-folder-children/ketcha6 ")
+  //     .then(response => (this.info = response.data))
   },
+  methods: {
+    async getChildren(){
+      try{
+        axios
+      .get("http://127.0.0.1:8000/api/get-folders/ ")
+      .then(response => (this.path = response.data))
+      return this.path
+      }catch(error){
+          console.log(error.response)
+      }
+    }
+
+  }
+
+ 
 };
 </script>
 

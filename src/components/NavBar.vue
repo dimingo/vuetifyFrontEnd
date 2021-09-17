@@ -45,8 +45,7 @@
           <p class="white--text subheading mt-1">Software Engineer</p>
         </v-flex>
         <v-flex grow>
-         
-          <popup/>
+          <popup />
         </v-flex>
       </v-layout>
       <v-list>
@@ -84,6 +83,7 @@ export default {
         { title: "Dashboard", icon: "mdi-view-dashboard", route: "/" },
         { title: "Photos", icon: "mdi-image", route: "/photos" },
         { title: "About", icon: "mdi-help-box", route: "/about" },
+        { title: "Folders", icon: "mdi-folder", route: "/allfolders" },
       ],
     };
   },

@@ -16,7 +16,7 @@
                 {{ person.name }}
               </div>
               <div class="grey--text">{{person.role}}</div>
-              <div>{{info}}</div>
+              <div>{{info.data}}</div>
             </v-card-text>
             <v-card-actions>
               <v-btn plain color="grey">
@@ -43,7 +43,7 @@ export default {
         { name: "Gouken", role: "Social media maverick", avatar:"/avatar-1.png" },
         { name: "Yoshi", role: "Sales guru", avatar:"/avatar-1.png" },
       ],
-      info: null
+     
     };
   },
   mounted() {
