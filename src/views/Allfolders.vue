@@ -4,7 +4,7 @@
 
   <v-treeview
     v-model="tree"
-    :open="initiallyOpen"
+  
     :items="items.data"
     activatable
     item-key="name"
@@ -15,7 +15,7 @@
         {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
       </v-icon>
       <v-icon v-else>
-        {{ files[item.file] }}
+        {{ files[item.documents.file] }}
       </v-icon>
     </template>
   </v-treeview>
@@ -29,7 +29,7 @@ import axios from 'axios'
 
 
     return{
-      initiallyOpen: "Annual General Meetings",
+    
       files: {
         html: 'mdi-language-html5',
         js: 'mdi-nodejs',
@@ -37,7 +37,7 @@ import axios from 'axios'
         md: 'mdi-language-markdown',
         pdf: 'mdi-file-pdf',
         png: 'mdi-file-image',
-        txt: 'mdi-file-document-outline',
+        doc: 'mdi-file-document-outline',
         xls: 'mdi-file-excel',
       },
       tree: [],
