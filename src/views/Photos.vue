@@ -54,5 +54,3 @@ export default {
 };
 </script>
 
-, avatar:"/avatar-2.png"
-, avatar: "/avatar-3.png
