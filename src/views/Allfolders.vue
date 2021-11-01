@@ -15,11 +15,13 @@
                   activatable
                   item-key="name"
                   open-on-click
-               
+                  @update:active="test(item)"
                 >
                   <template slot="prepend" slot-scope="{ item, open }">
-                    <v-icon v-if="item">
+
+                    <v-icon v-if="item.uuid" >
                       {{ open ? "mdi-folder-open" : "mdi-folder" }}
+                     
                     </v-icon>
                   </template>
                 </v-treeview>
@@ -32,8 +34,10 @@
                 Document List
               </v-card-title>
               <v-card-text>
-                <v-treeview :items="documents">
+                <v-treeview :items="documents.data" item-key="name">
+                  {{ documents }}
                   <template slot="prepend" slot-scope="{ item }">
+                   
                     <v-icon v-if="item">
                       {{ files[item.type] }}
                     </v-icon>
@@ -102,11 +106,40 @@ export default {
 
   methods: {
     async loadtree() {
-      axios.get(`http://127.0.0.1:8000/api/get-folders`).then((response) => {
-        if (response.data.success) {
+      axios
+        .get("http://127.0.0.1:8000/api/get-folders")
+        .then((response) => {
           this.items = response.data;
-        }
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    listDocument: function(item) {
+      let name = item.name;
+      console.log(name);
+    },
+    test(item) {
+     
+
+         axios
+         .get("http://127.0.0.1:8000/api/get-document-children/" + item.uuid)
+
+        .then((response) => {
+          this.documents = response.data;
+          console.log(this.documents.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+      
+      
+     
+       
     },
   },
 };
